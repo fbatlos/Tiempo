@@ -1,5 +1,7 @@
 package Tiempo
+fun pedirNumT(){
 
+}
 fun main(){
     var tiempo1 = tiempo()
     var pedirnum:String
@@ -42,7 +44,7 @@ fun main(){
                 println("Datos invalidos")
         }
 
-    println("**********************************************************************")
+    println("**********************************************************************\nIncrementar")
     val t =tiempo()
 
     print("Horas => ")
@@ -66,6 +68,58 @@ fun main(){
     t.comprobar()
     tiempo1.incrementar(t)
     tiempo1.comprobar()
+    tiempo1.actualizarResultado()
+    println(tiempo1.toString())
+
+    println("***************************************************************************\nDecreciente")
+
+
+    print("Horas => ")
+    pedirnum = readln()
+    if (pedirnum ==""){
+        t.hora=0
+    }else t.hora = pedirnum.toInt()
+
+    print("Minutos => ")
+    pedirnum= readln()
+    if (pedirnum == ""){
+        t.minuto = 0
+    }else t.minuto = pedirnum.toInt()
+
+    print("Segundos => ")
+    pedirnum = readln()
+    if (pedirnum == ""){
+        t.segundo = 0
+    }else t.segundo = pedirnum.toInt()
+
+    t.comprobar()
+    tiempo1.decrementar(t)
+    tiempo1.comprobar()
+    tiempo1.actualizarResultado()
+    println(tiempo1.toString())
+
+    println("*******************************************************************************\nComparar")
+
+    print("Horas => ")
+    pedirnum = readln()
+    if (pedirnum ==""){
+        t.hora=0
+    }else t.hora = pedirnum.toInt()
+
+    print("Minutos => ")
+    pedirnum= readln()
+    if (pedirnum == ""){
+        t.minuto = 0
+    }else t.minuto = pedirnum.toInt()
+
+    print("Segundos => ")
+    pedirnum = readln()
+    if (pedirnum == ""){
+        t.segundo = 0
+    }else t.segundo = pedirnum.toInt()
+
+    t.comprobar()
+    tiempo1.comparar(t)
     tiempo1.actualizarResultado()
     println(tiempo1.toString())
 }

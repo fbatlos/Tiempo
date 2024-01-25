@@ -2,6 +2,12 @@ package Tiempo
 
 class tiempo() {
     var hora = 0
+
+    /**setHora comprobará si la hora introducida es <24,
+     * si es mayor saltará una excepción , te lo mencionará y
+     * te pedirá actualizarlo , así hasta que lo introsuzcas bien.
+     *
+     */
     fun  setHora() {
         do {
             try {
@@ -57,6 +63,43 @@ class tiempo() {
         }while (true)
     }
 
+    fun decrementar(t:tiempo):Boolean{
+        do {
+            try {
+                val totalSegActual = hora * 3600 + minuto * 60 + segundo
+                val totalSegAñadir = t.hora * 3600 + t.minuto * 60 + t.segundo
+                if (totalSegActual - totalSegAñadir < 0) {
+                    return false
+                }
+
+                hora = (totalSegActual-totalSegAñadir ) / 3600
+                minuto = ((totalSegActual-totalSegAñadir ) % 3600) / 60
+                segundo = (totalSegActual-totalSegAñadir ) % 60
+
+                return true
+
+            } catch (_: NumberFormatException) {
+                println("Dato no valido")
+            }
+        }while (true)
+    }
+
+    fun comparar(t:tiempo):Int{
+        do {
+            try {
+                val totalSegActual = hora * 3600 + minuto * 60 + segundo
+                val totalSegAñadir = t.hora * 3600 + t.minuto * 60 + t.segundo
+                when {
+                    (totalSegActual - totalSegAñadir < 0) -> return -1
+                    (totalSegActual - totalSegAñadir == 0) -> return 0
+                    (totalSegActual - totalSegAñadir > 0) -> return 1
+                }
+
+            } catch (_: NumberFormatException) {
+                println("Dato no valido")
+            }
+        }while (true)
+    }
     fun actualizarResultado(){//Actualizara el string resultado dependiendo si hemos rellenado o no los diferentes parametros
         result=""
         if ((hora ?: 0) == 0){ result = "00 h"}
